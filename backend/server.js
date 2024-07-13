@@ -30,7 +30,7 @@ const Dish = mongoose.model('Dish', dishSchema);
 
 const io = new Server(server, {
    cors: {
-    origin: "http://localhost:3000", // Corrected the typo here
+    origin: "http://localhost:3000", 
     methods: ["GET", "POST"],
 }
 ,
@@ -52,13 +52,14 @@ io.on("connection", (socket) =>{
   
 
 
-// Fetch all dishes
+
 app.get('/api/dishes', async (req, res) => {
   const dishes = await Dish.find();
   res.json(dishes);
 });
 
-// Toggle isPublished status
+
+
 app.post('/api/dishes/toggle', async (req, res) => {
   const { dishId } = req.body;
   const dish = await Dish.findOne({ dishId });
